@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#f4f4f2">
+
+    <link rel="manifest" href="./manifest.webmanifest">
+
+    <title>Arcanis: Energy Tracker</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+
+    <main class="game-board">
+
+        <!-- PLAYER 1 -->
+        <section class="player-panel player-one" id="player1">
+
+            <div class="player-header">
+                <div class="player-name">
+                    <span class="player-dot blue"></span>
+                    PLAYER 1
+                </div>
+
+                <div class="player-total">
+                    <span>TOTAL ENERGY</span>
+                    <strong id="total1">0</strong>
+                </div>
+
+                <button class="reset-player" data-reset="1">
+                    Reset
+                </button>
+            </div>
+
+            <div class="energy-grid" id="grid1"></div>
+
+        </section>
+
+
+        <!-- PLAYER 2 -->
+        <section class="player-panel player-two" id="player2">
+
+            <div class="player-header">
+                <div class="player-name">
+                    <span class="player-dot red"></span>
+                    PLAYER 2
+                </div>
+
+                <div class="player-total">
+                    <span>TOTAL ENERGY</span>
+                    <strong id="total2">0</strong>
+                </div>
+
+                <button class="reset-player" data-reset="2">
+                    Reset
+                </button>
+            </div>
+
+            <div class="energy-grid" id="grid2"></div>
+
+        </section>
+
+    </main>
+
+
+    <div class="global-controls">
+
+        <button id="undoButton" class="undo-button">
+            ↶ Undo
+        </button>
+
+        <button id="resetAllButton" class="reset-all-button">
+            Reset All
+        </button>
+
+    </div>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker
+        .register("./sw.js")
+        .then((registration) => {
+          console.log(
+            "Arcanis Service Worker registered:",
+            registration.scope
+          );
+        })
+        .catch((error) => {
+          console.error(
+            "Service Worker registration failed:",
+            error
+          );
+        });
+    });
+  }
+</script>
+
+</body>
+</html>

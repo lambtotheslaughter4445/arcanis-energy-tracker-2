@@ -1,0 +1,365 @@
+
+/* ================================
+   ARCANIS: ENERGY TRACKER v0.4
+   Interface Polish
+================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f4f2;
+    color: #111;
+    overflow: hidden;
+}
+
+/* ================================
+   MAIN GAME AREA
+================================ */
+
+.game-board {
+    width: calc(100% - 58px);
+    height: 100vh;
+    height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 10px;
+    gap: 10px;
+}
+
+/* ================================
+   PLAYER PANELS
+================================ */
+
+.player-panel {
+    flex: 1;
+    min-height: 0;
+
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 18px;
+
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    overflow: hidden;
+}
+
+/* Player 2 faces the opposite direction */
+
+.player-two {
+    transform: rotate(180deg);
+}
+
+/* ================================
+   PLAYER HEADERS
+================================ */
+
+.player-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 34px;
+}
+
+.player-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.player-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.blue {
+    background: #355f9c;
+}
+
+.red {
+    background: #a65343;
+}
+
+.player-total {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.player-total span {
+    font-size: 11px;
+    font-weight: 700;
+    color: #888;
+    letter-spacing: 1px;
+}
+
+.player-total strong {
+    font-size: 25px;
+    min-width: 28px;
+    text-align: center;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    touch-action: manipulation;
+}
+
+.reset-player {
+    padding: 9px 14px;
+    background: #eee;
+    border-radius: 10px;
+    font-weight: 700;
+    color: #555;
+}
+
+/* ================================
+   ENERGY MARK GRID
+================================ */
+
+.energy-grid {
+    flex: 1;
+    min-height: 0;
+
+    display: grid;
+    grid-template-columns: repeat(15, minmax(0, 1fr));
+
+    align-items: stretch;
+}
+
+.energy-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    min-width: 0;
+
+    border-right: 1px solid #eee;
+}
+
+.energy-cell:last-child {
+    border-right: none;
+}
+
+/* ================================
+   ENERGY NUMBERS
+================================ */
+
+.energy-count {
+    font-size: clamp(16px, 3vw, 30px);
+    font-weight: 800;
+    text-align: center;
+}
+
+/* ================================
+   ENERGY MARK BUTTONS
+================================ */
+
+.mark-button {
+    width: 100%;
+    aspect-ratio: 1;
+
+    max-width: 58px;
+
+    border-radius: 50%;
+    background: transparent;
+    color: white;
+
+    font-size: clamp(12px, 2vw, 19px);
+    font-weight: 800;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    touch-action: manipulation;
+}
+
+.mark-button:active {
+    transform: scale(0.92);
+}
+
+.mark-icon {
+    display: block;
+    width: 58px;
+    height: 58px;
+    max-width: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* ================================
+   ADD ENERGY BUTTON
+================================ */
+
+.add-button {
+    background: transparent;
+    color: #888;
+
+    font-size: clamp(25px, 4vw, 38px);
+    font-weight: 700;
+    line-height: 1;
+
+    padding: 3px;
+
+    touch-action: manipulation;
+}
+
+.add-button:active {
+    color: #111;
+    transform: scale(0.9);
+}
+
+/* ================================
+   GLOBAL CONTROL RAIL
+================================ */
+
+.global-controls {
+    position: fixed;
+
+    top: 50%;
+    right: 4px;
+    bottom: auto;
+    left: auto;
+
+    transform: translateY(-50%);
+
+    width: 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 18px;
+
+    padding: 8px 0;
+
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 14px;
+
+    box-shadow: 0 2px 8px #0002;
+
+    z-index: 10;
+}
+
+/* Rotated control buttons */
+
+.undo-button,
+.reset-all-button {
+    width: 92px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: rotate(90deg);
+
+    border-radius: 9px;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    background: #eee;
+    color: #333;
+}
+
+.undo-button {
+    color: #333;
+}
+
+.reset-all-button {
+    color: #a0443c;
+}
+
+.undo-button:active,
+.reset-all-button:active {
+    opacity: 0.7;
+}
+
+/* ================================
+   SMALL-SCREEN ADJUSTMENTS
+================================ */
+
+@media (max-width: 600px) {
+
+    .game-board {
+        width: calc(100% - 52px);
+        padding: 6px;
+        gap: 5px;
+    }
+
+    .player-panel {
+        padding: 6px;
+        gap: 5px;
+    }
+
+    .player-name {
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+
+    .player-total {
+        gap: 5px;
+    }
+
+    .player-total span {
+        font-size: 8px;
+    }
+
+    .player-total strong {
+        font-size: 19px;
+    }
+
+    .reset-player {
+        padding: 7px;
+        font-size: 10px;
+    }
+
+    .energy-cell {
+        padding: 0 1px;
+    }
+
+    .mark-icon {
+        width: 100%;
+        height: auto;
+        max-height: 48px;
+    }
+
+    .global-controls {
+        right: 2px;
+        width: 44px;
+        gap: 14px;
+    }
+
+    .undo-button,
+    .reset-all-button {
+        width: 82px;
+        height: 32px;
+        font-size: 11px;
+    }
+}
