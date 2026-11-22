@@ -1,5 +1,5 @@
 
-const CACHE_NAME = "arcanis-energy-v06";
+const CACHE_NAME = "arcanis-energy-v07";
 
 const APP_FILES = [
   "./",
