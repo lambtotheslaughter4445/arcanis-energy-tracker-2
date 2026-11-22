@@ -1,7 +1,7 @@
 
 /* ==========================================
 ARCANIS: ENERGY TRACKER v0.7
-OPPOSING PLAYER LAYOUT
+TOP-AND-BOTTOM TABLE LAYOUT
 ========================================== */
 
 * {
@@ -62,10 +62,16 @@ PLAYER PANELS
   overflow: hidden;
 }
 
-/* Player 2 faces the opposite direction */
+/* Player 1 faces the top edge */
+
+.player-one {
+  transform: rotate(180deg);
+}
+
+/* Player 2 faces the bottom edge */
 
 .player-two {
-  transform: rotate(180deg);
+  transform: none;
 }
 
 /* ==========================================
@@ -378,10 +384,12 @@ SMALL LANDSCAPE SCREENS
   }
 
   .mark-button {
-    height: 44px;
+    height: 44px !important;
   }
 
   .mark-icon {
+    width: 100% !important;
+    height: auto !important;
     max-width: 38px;
     max-height: 38px;
   }
