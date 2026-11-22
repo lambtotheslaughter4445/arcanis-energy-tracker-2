@@ -1,5 +1,5 @@
 
-const CACHE_NAME = "arcanis-energy-v05";
+const CACHE_NAME = "arcanis-energy-v06";
 
 const APP_FILES = [
   "./",
@@ -44,7 +44,10 @@ self.addEventListener("activate", (event) => {
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames
-          .filter((name) => name !== CACHE_NAME)
+          .filter((name) =>
+            name.startsWith("arcanis-energy-") &&
+            name !== CACHE_NAME
+          )
           .map((name) => caches.delete(name))
       );
     })
