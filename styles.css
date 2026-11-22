@@ -1,455 +1,453 @@
 
 /* ==========================================
-   ARCANIS: ENERGY TRACKER v0.6
-   LANDSCAPE LAYOUT REFINEMENT
+ARCANIS: ENERGY TRACKER v0.7
+OPPOSING PLAYER LAYOUT
 ========================================== */
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f4f4f2;
-    color: #111;
-    overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f4f2;
+  color: #111;
+  overflow: hidden;
 }
 
 button {
-    font-family: inherit;
-    cursor: pointer;
-    border: none;
-    touch-action: manipulation;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  touch-action: manipulation;
 }
 
 /* ==========================================
-   MAIN GAME AREA
+MAIN GAME AREA
 ========================================== */
 
 .game-board {
-    width: calc(100% - 88px);
-    height: 100vh;
-    height: 100dvh;
+  width: calc(100% - 88px);
+  height: 100vh;
+  height: 100dvh;
 
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: column;
 
-    padding: 8px;
-    gap: 8px;
+  padding: 8px;
+  gap: 8px;
 }
 
 /* ==========================================
-   PLAYER PANELS
+PLAYER PANELS
 ========================================== */
 
 .player-panel {
-    flex: 1;
-    min-width: 0;
-    min-height: 0;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
 
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 16px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
 
-    padding: 8px;
+  padding: 8px;
 
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 
-    overflow: hidden;
+  overflow: hidden;
 }
 
 /* Player 2 faces the opposite direction */
 
 .player-two {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 /* ==========================================
-   PLAYER HEADERS
+PLAYER HEADERS
 ========================================== */
 
 .player-header {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    min-height: 32px;
-    flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  flex-shrink: 0;
 }
 
 .player-name {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    white-space: nowrap;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  white-space: nowrap;
 }
 
 .player-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .blue {
-    background: #355f9c;
+  background: #355f9c;
 }
 
 .red {
-    background: #a65343;
+  background: #a65343;
 }
 
 .player-total {
-    margin-left: auto;
+  margin-left: auto;
 
-    display: flex;
-    align-items: center;
-    gap: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .player-total span {
-    font-size: 9px;
-    font-weight: 700;
-    color: #888;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
+  font-size: 9px;
+  font-weight: 700;
+  color: #888;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
 .player-total strong {
-    font-size: 22px;
-    min-width: 25px;
-    text-align: center;
+  font-size: 22px;
+  min-width: 25px;
+  text-align: center;
 }
 
 .reset-player {
-    padding: 7px 10px;
-    background: #eee;
-    border-radius: 8px;
+  padding: 7px 10px;
+  background: #eee;
+  border-radius: 8px;
 
-    font-size: 11px;
-    font-weight: 700;
-    color: #555;
+  font-size: 11px;
+  font-weight: 700;
+  color: #555;
 
-    flex-shrink: 0;
+  flex-shrink: 0;
 }
 
 /* ==========================================
-   ENERGY MARK GRID
+ENERGY MARK GRID
 ========================================== */
 
 .energy-grid {
-    flex: 1;
-    min-height: 0;
-    min-width: 0;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
 
-    display: grid;
-    grid-template-columns: repeat(15, minmax(0, 1fr));
+  display: grid;
+  grid-template-columns: repeat(15, minmax(0, 1fr));
 
-    align-items: stretch;
+  align-items: stretch;
 }
 
 .energy-cell {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 
-    min-width: 0;
-    overflow: hidden;
+  min-width: 0;
+  overflow: hidden;
 
-    border-right: 1px solid #eee;
+  border-right: 1px solid #eee;
 }
 
 .energy-cell:last-child {
-    border-right: none;
+  border-right: none;
 }
 
 /* ==========================================
-   ENERGY NUMBERS
+ENERGY NUMBERS
 ========================================== */
 
 .energy-count {
-    font-size: clamp(13px, 2.2vw, 26px);
-    font-weight: 800;
-    text-align: center;
-    line-height: 1;
+  font-size: clamp(13px, 2.2vw, 26px);
+  font-weight: 800;
+  text-align: center;
+  line-height: 1;
 }
 
 /* ==========================================
-   ENERGY MARK BUTTONS
+ENERGY MARK BUTTONS
 ========================================== */
 
 .mark-button {
-    width: 100%;
-    height: 58px;
+  width: 100%;
+  height: 58px;
 
-    padding: 0;
-    border-radius: 0;
+  padding: 0;
+  border-radius: 0;
 
-    background: transparent;
-    color: white;
+  background: transparent;
+  color: white;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    touch-action: manipulation;
+  touch-action: manipulation;
 }
 
 .mark-button:active {
-    transform: scale(0.92);
+  transform: scale(0.92);
 }
 
 .mark-icon {
-    display: block;
+  display: block;
 
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 
-    max-width: 48px;
-    max-height: 48px;
+  max-width: 48px;
+  max-height: 48px;
 
-    object-fit: contain;
+  object-fit: contain;
 
-    pointer-events: none;
-    user-select: none;
+  pointer-events: none;
+  user-select: none;
 }
 
 /* ==========================================
-   ADD ENERGY BUTTON
+ADD ENERGY BUTTON
 ========================================== */
 
 .add-button {
-    width: 100%;
-    min-width: 0;
+  width: 100%;
+  min-width: 0;
 
-    padding: 0;
+  padding: 0;
 
-    background: transparent;
-    color: #888;
+  background: transparent;
+  color: #888;
 
-    font-size: clamp(17px, 2.2vw, 27px);
-    font-weight: 700;
-    line-height: 1;
+  font-size: clamp(17px, 2.2vw, 27px);
+  font-weight: 700;
+  line-height: 1;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    touch-action: manipulation;
+  touch-action: manipulation;
 }
 
 .add-button:active {
-    color: #111;
-    transform: scale(0.9);
+  color: #111;
+  transform: scale(0.9);
 }
 
 /* ==========================================
-   GLOBAL CONTROL RAIL
+GLOBAL CONTROL RAIL
 ========================================== */
 
 .global-controls {
-    position: fixed;
+  position: fixed;
 
-    top: 50%;
-    right: 5px;
+  top: 50%;
+  right: 5px;
 
-    transform: translateY(-50%);
+  transform: translateY(-50%);
 
-    width: 70px;
+  width: 70px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
 
-    gap: 10px;
-    padding: 7px;
+  gap: 10px;
+  padding: 7px;
 
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 12px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
 
-    box-shadow: 0 2px 8px #0002;
+  box-shadow: 0 2px 8px #0002;
 
-    z-index: 10;
+  z-index: 10;
 }
-
-/* Control buttons are no longer rotated */
 
 .undo-button,
 .reset-all-button {
-    width: 100%;
-    min-height: 38px;
+  width: 100%;
+  min-height: 38px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    padding: 5px 3px;
+  padding: 5px 3px;
 
-    border-radius: 8px;
+  border-radius: 8px;
 
-    font-size: 11px;
-    font-weight: 800;
-    white-space: nowrap;
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
 
-    background: #eee;
-    color: #333;
+  background: #eee;
+  color: #333;
 }
 
 .undo-button {
-    color: #333;
+  color: #333;
 }
 
 .reset-all-button {
-    color: #a0443c;
+  color: #a0443c;
 }
 
 .undo-button:active,
 .reset-all-button:active {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 /* ==========================================
-   SMALL LANDSCAPE SCREENS
+SMALL LANDSCAPE SCREENS
 ========================================== */
 
 @media (max-width: 700px) and (orientation: landscape) {
 
-    .game-board {
-        width: calc(100% - 76px);
-        padding: 5px;
-        gap: 5px;
-    }
+  .game-board {
+    width: calc(100% - 76px);
+    padding: 5px;
+    gap: 5px;
+  }
 
-    .player-panel {
-        padding: 5px;
-        gap: 4px;
-        border-radius: 12px;
-    }
+  .player-panel {
+    padding: 5px;
+    gap: 4px;
+    border-radius: 12px;
+  }
 
-    .player-header {
-        gap: 3px;
-        min-height: 27px;
-    }
+  .player-header {
+    gap: 3px;
+    min-height: 27px;
+  }
 
-    .player-name {
-        font-size: 9px;
-        letter-spacing: 0;
-        gap: 4px;
-    }
+  .player-name {
+    font-size: 9px;
+    letter-spacing: 0;
+    gap: 4px;
+  }
 
-    .player-dot {
-        width: 7px;
-        height: 7px;
-    }
+  .player-dot {
+    width: 7px;
+    height: 7px;
+  }
 
-    .player-total {
-        gap: 3px;
-    }
+  .player-total {
+    gap: 3px;
+  }
 
-    .player-total span {
-        font-size: 7px;
-        letter-spacing: 0;
-    }
+  .player-total span {
+    font-size: 7px;
+    letter-spacing: 0;
+  }
 
-    .player-total strong {
-        font-size: 17px;
-        min-width: 19px;
-    }
+  .player-total strong {
+    font-size: 17px;
+    min-width: 19px;
+  }
 
-    .reset-player {
-        padding: 5px 6px;
-        font-size: 9px;
-    }
+  .reset-player {
+    padding: 5px 6px;
+    font-size: 9px;
+  }
 
-    .energy-cell {
-        padding: 0;
-    }
+  .energy-cell {
+    padding: 0;
+  }
 
-    .energy-count {
-        font-size: clamp(11px, 2.5vw, 19px);
-    }
+  .energy-count {
+    font-size: clamp(11px, 2.5vw, 19px);
+  }
 
-    .mark-button {
-        height: 44px;
-    }
+  .mark-button {
+    height: 44px;
+  }
 
-    .mark-icon {
-        max-width: 38px;
-        max-height: 38px;
-    }
+  .mark-icon {
+    max-width: 38px;
+    max-height: 38px;
+  }
 
-    .add-button {
-        font-size: clamp(15px, 3vw, 21px);
-    }
+  .add-button {
+    font-size: clamp(15px, 3vw, 21px);
+  }
 
-    .global-controls {
-        right: 3px;
-        width: 66px;
-        padding: 5px;
-        gap: 7px;
-    }
+  .global-controls {
+    right: 3px;
+    width: 66px;
+    padding: 5px;
+    gap: 7px;
+  }
 
-    .undo-button,
-    .reset-all-button {
-        min-height: 34px;
-        font-size: 10px;
-    }
+  .undo-button,
+  .reset-all-button {
+    min-height: 34px;
+    font-size: 10px;
+  }
 }
 
 /* ==========================================
-   PORTRAIT PHONE LAYOUT
+PORTRAIT PHONE LAYOUT
 ========================================== */
 
 @media (orientation: portrait) {
 
-    body {
-        overflow: auto;
-    }
+  body {
+    overflow: auto;
+  }
 
-    .game-board {
-        width: 100%;
-        height: calc(100dvh - 66px);
+  .game-board {
+    width: 100%;
+    height: calc(100dvh - 66px);
 
-        flex-direction: column;
+    flex-direction: column;
 
-        padding: 6px;
-        gap: 6px;
-    }
+    padding: 6px;
+    gap: 6px;
+  }
 
-    .player-panel {
-        padding: 7px;
-    }
+  .player-panel {
+    padding: 7px;
+  }
 
-    .global-controls {
-        top: auto;
-        right: 8px;
-        bottom: 6px;
-        left: 8px;
+  .global-controls {
+    top: auto;
+    right: 8px;
+    bottom: 6px;
+    left: 8px;
 
-        transform: none;
+    transform: none;
 
-        width: auto;
+    width: auto;
 
-        flex-direction: row;
-        justify-content: center;
+    flex-direction: row;
+    justify-content: center;
 
-        padding: 5px;
-        gap: 10px;
-    }
+    padding: 5px;
+    gap: 10px;
+  }
 
-    .undo-button,
-    .reset-all-button {
-        width: 50%;
-        min-height: 38px;
-    }
+  .undo-button,
+  .reset-all-button {
+    width: 50%;
+    min-height: 38px;
+  }
 }
